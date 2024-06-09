@@ -10,15 +10,15 @@ const timerElements = {
   days: document.querySelector('[data-days]'),
   hours: document.querySelector('[data-hours]'),
   minutes: document.querySelector('[data-minutes]'),
-  seconds: document.querySelector('[data-seconds]')
+  seconds: document.querySelector('[data-seconds]'),
 };
 
 startBtn.disabled = true;
- 
+
 let countdownInterval;
 let selectedDate;
 
-const convertMs = (ms) => {
+const convertMs = ms => {
   const second = 1000;
   const minute = second * 60;
   const hour = minute * 60;
@@ -32,7 +32,7 @@ const convertMs = (ms) => {
   return { days, hours, minutes, seconds };
 };
 
-const addLeadingZero = (value) => value.toString().padStart(2, '0');
+const addLeadingZero = value => value.toString().padStart(2, '0');
 
 const updateTimer = ({ days, hours, minutes, seconds }) => {
   timerElements.days.textContent = addLeadingZero(days);
@@ -62,16 +62,19 @@ flatpickr(dateTimePicker, {
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
-  onClose: (selectedDates) => {
+  onClose: selectedDates => {
     selectedDate = selectedDates[0];
 
     if (selectedDate <= new Date()) {
-      iziToast.error({ title: 'Error', message: 'Please choose a date in the future' });
+      iziToast.error({
+        title: 'Error',
+        message: 'Please choose a date in the future',
+      });
       startBtn.disabled = true;
     } else {
       startBtn.disabled = false;
     }
-  }
+  },
 });
 
 startBtn.addEventListener('click', () => {

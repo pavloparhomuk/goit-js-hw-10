@@ -4,7 +4,7 @@
 }
 
 #datetime-picker {
- padding: 5px;
+  padding: 5px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -15,7 +15,7 @@
 }
 
 button[data-start] {
-   padding: 4px;
+  padding: 4px;
   min-width: 80px;
 }
 button[data-start]:disabled {
